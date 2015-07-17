@@ -1,3 +1,12 @@
+## These functions provide a resource efficient procedure to accept square matrix data
+## and return the inverse values.  These inverse values are calculated once and stored in 
+## cache memory.  If the values within the matrix do not change the inverse result can be retrieved 
+## multiple times (during a loop for example) without necessitating a recalculation each time.
+
+
+## This function creates a list of the matrix data and the functions necessary to calculated
+## and store the results in cache memory.
+
 makeCacheMatrix <- function(x = numeric()){
     m=NULL
     set = function(y){
@@ -11,6 +20,10 @@ makeCacheMatrix <- function(x = numeric()){
          setsolve=setsolve,
          getsolve=getsolve)
 }
+
+##  This function accepts data and a list of functions created in the makeCacheMatrix function.
+##  This funtions will check to see if the calcultion has already been done, and if it has will 
+##  return those values directly from memory.
 
 cacheSolve = function(x,...){
   m=x$getsolve()
